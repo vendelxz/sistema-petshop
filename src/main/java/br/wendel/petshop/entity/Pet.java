@@ -2,6 +2,9 @@ package br.wendel.petshop.entity;
 
 import jakarta.persistence.*;
 
+import br.wendel.petshop.enums.TipoPet;
+
+
 @Entity
 public class Pet {
 
