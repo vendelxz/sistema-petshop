@@ -13,6 +13,10 @@ public class Cliente {
 
     private String nome;
 
+    private String telefone;
+
+    private String email;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
     private List<Pet> pets = new ArrayList<>();
 
@@ -46,4 +50,21 @@ public class Cliente {
     public void setPets(List<Pet> pets) {
         this.pets = pets;
     }
+
+    public String getTelefone() {
+    return telefone;
+}
+
+public void setTelefone(String telefone) {
+    this.telefone = telefone;
+}
+
+public String getEmail() {
+    return email;
+}
+
+public void setEmail(String email) {
+    this.email = email;
+}
+
 }
