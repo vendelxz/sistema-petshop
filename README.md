@@ -1,9 +1,20 @@
- Inicialmente um sistema de gerenciamento de Petshop com uma futura integração de banco de dados, juntamente com SpringBoot
+# 🐶 Sistema Petshop
 
- - Entidades compostas por funcionário, clientes, pets, agendamento e serviços oferecidos (possível adição de uma ou mais entidades)
+Este é um projeto Java com Spring Boot para gerenciamento de um petshop. Nele é possível cadastrar clientes, pets e realizar operações básicas de CRUD por meio de uma API REST.
 
-- Futuramente analisar possibilidade de integração com Front-End em busca de um domínio para interface visual do sistema (para começo não há necessidade de algo complexo)
+---
 
-- Analisar modelo de banco de dados que se encaixe melhor no sistema e suas prefêrencias
+## 🚀 Tecnologias utilizadas (até o momento...)
 
-...
+- Java 17
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- H2 Database (para testes locais)
+- Maven
+- Postman (para testes de API)
+
+---
+## 👨‍💻 Autor
+- Feito por **José Wendel **
+
