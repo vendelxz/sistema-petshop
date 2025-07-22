@@ -16,5 +16,5 @@ Este é um projeto Java com Spring Boot para gerenciamento de um petshop. Nele �
 
 ---
 ## 👨‍💻 Autor
-- Feito por **José Wendel **
+- Feito por **José Wendel**
 
