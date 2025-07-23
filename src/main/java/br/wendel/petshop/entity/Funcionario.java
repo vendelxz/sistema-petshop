@@ -11,7 +11,7 @@ import br.wendel.petshop.enums.Cargo;
 public class Funcionario {
 
     @Id
-    @Pattern(regexp = "\\d{11}", message = "CPF deve conter 11 dígitos")
+    @NotBlank(message =  "É necessário uma id")
     private String id;
 
     @NotBlank(message = "Nome Obrigatório")
