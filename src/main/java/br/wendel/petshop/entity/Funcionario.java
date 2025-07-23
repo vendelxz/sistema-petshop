@@ -1,7 +1,9 @@
 package br.wendel.petshop.entity;
 
 import jakarta.persistence.*;
-
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import br.wendel.petshop.enums.Cargo;
 
 
@@ -12,11 +14,14 @@ public class Funcionario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Nome Obrigatório")
     private String nome;
 
+    @Pattern(regexp = "\\d{11}", message = "CPF deve conter 11 dígitos")
     private String cpf;
 
-    @Enumerated(EnumType.STRING) // Salva o nome do enum no banco (ex: "GERENTE")
+    @Enumerated(EnumType.STRING) 
+    @NotNull(message = "Ter um cargo é obrigatório")
     private Cargo cargo;
 
     public Funcionario() {}
