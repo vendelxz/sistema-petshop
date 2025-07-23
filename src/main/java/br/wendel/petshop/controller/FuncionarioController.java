@@ -35,7 +35,7 @@ public class FuncionarioController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletarCliente(@PathVariable String id){
+    public void deletarFuncionario(@PathVariable String id){
         funcionarioRepository.deleteById(id);
     }
 
