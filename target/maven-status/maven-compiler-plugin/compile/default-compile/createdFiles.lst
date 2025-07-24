@@ -1,10 +1,12 @@
+br\wendel\petshop\controller\FuncionarioController.class
 br\wendel\petshop\repository\FuncionarioRepository.class
-br\wendel\petshop\repository\ClienteRepository.class
-br\wendel\petshop\enums\TipoPet.class
-br\wendel\petshop\entity\Cliente.class
 br\wendel\petshop\controller\ClienteController.class
-br\wendel\petshop\repository\PetRepository.class
-br\wendel\petshop\PetshopApplication.class
 br\wendel\petshop\entity\Funcionario.class
 br\wendel\petshop\enums\Cargo.class
 br\wendel\petshop\entity\Pet.class
+br\wendel\petshop\repository\ClienteRepository.class
+br\wendel\petshop\exception\GlobalExceptionHandler.class
+br\wendel\petshop\enums\TipoPet.class
+br\wendel\petshop\entity\Cliente.class
+br\wendel\petshop\repository\PetRepository.class
+br\wendel\petshop\PetshopApplication.class

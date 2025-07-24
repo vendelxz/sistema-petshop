@@ -14,6 +14,7 @@ import jakarta.validation.constraints.Pattern;
 public class Cliente {
 
     @Id
+    @NotBlank(message = "Campo obrigatório")
     @Pattern(regexp = "\\d{11}", message = "CPF deve conter 11 dígitos")
     private String cpf;
 

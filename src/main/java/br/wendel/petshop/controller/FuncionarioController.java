@@ -1,6 +1,8 @@
 package br.wendel.petshop.controller;
 import java.util.List;
 import java.util.Optional;
+
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,12 +32,12 @@ public class FuncionarioController {
     }
 
     @PostMapping
-    public Funcionario cadastrarFuncionario(@RequestBody Funcionario funcionario){
+    public Funcionario cadastrarFuncionario(@RequestBody @Valid Funcionario funcionario){
         return funcionarioRepository.save(funcionario);
     }
 
     @DeleteMapping("/{id}")
-    public void deletarFuncionario(@PathVariable String id){
+    public void deletarFuncionario(@PathVariable @Valid String id){
         funcionarioRepository.deleteById(id);
     }
 

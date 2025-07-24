@@ -2,6 +2,7 @@ package br.wendel.petshop.controller;
 
 import br.wendel.petshop.entity.Cliente;
 import br.wendel.petshop.repository.ClienteRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,12 +27,12 @@ public class ClienteController {
     }
 
     @PostMapping
-    public Cliente cadastrarCliente(@RequestBody Cliente cliente) {
+    public Cliente cadastrarCliente(@RequestBody @Valid Cliente cliente) {
         return clienteRepository.save(cliente);
     }
 
     @DeleteMapping("/{cpf}")
-    public void deletarCliente(@PathVariable String cpf) {
+    public void deletarCliente(@PathVariable @Valid String cpf) {
         clienteRepository.deleteById(cpf);
     }
 
