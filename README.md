@@ -19,9 +19,9 @@ Este é um projeto Java com Spring Boot para gerenciamento de um petshop. Nele �
 -Basta rodar a aplicação pela IDE ou usando o terminal (PowerShell ou terminal da própria IDE) com o seguinte código:
 ### mvn spring:boot-run 
 A API estará disponível em http://localhost:8080
--http://localhost:8080/funcionarios 
--http://localhost:8080/clientes
-http://localhost:8080/pets
+- http://localhost:8080/funcionarios 
+- http://localhost:8080/clientes
+- http://localhost:8080/pets
 ---
 # #📚 Endpoints disponíveis
 - /clientes — Operações CRUD para clientes
