@@ -23,7 +23,7 @@ A API estará disponível em http://localhost:8080
 - http://localhost:8080/clientes
 - http://localhost:8080/pets
 ---
-# #📚 Endpoints disponíveis
+## 📚 Endpoints disponíveis
 - /clientes — Operações CRUD para clientes
 - /pets — Operações CRUD para pets
 - /funcionarios — Operações CRUD para funcionários
