@@ -28,7 +28,7 @@ A API estará disponível em http://localhost:8080
 - /pets — Operações CRUD para pets
 - /funcionarios — Operações CRUD para funcionários
   ## OBS:
-  - quando for cadastrar telefone e cpf colocar sem caracteres especiais (Ex: 000.000.000-00 e sim 00000000000)
+  - Quando for cadastrar telefone e cpf colocar sem caracteres especiais (Ex: 000.000.000-00 e sim 00000000000)
   - Pets: CACHORRO, GATO, PASSARO, PEIXE, ROEDOR, REPTIL
   - Funcionários:  BANHISTA, TOSADOR, VETERINARIO, ATENDENTE
 ---
