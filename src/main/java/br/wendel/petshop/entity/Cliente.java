@@ -1,6 +1,7 @@
 
 package br.wendel.petshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class Cliente {
     private String telefone;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Pet> pets = new ArrayList<>();
 
     public Cliente() {}

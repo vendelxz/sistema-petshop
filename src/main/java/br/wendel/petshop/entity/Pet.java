@@ -1,5 +1,6 @@
 package br.wendel.petshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import br.wendel.petshop.enums.TipoPet;
@@ -21,6 +22,7 @@ public class Pet {
     private String raca;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "cliente_cpf")
     private Cliente cliente;
 
