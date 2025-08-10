@@ -33,7 +33,7 @@ A API estará disponível em http://localhost:8080
   - Funcionários:  BANHISTA, TOSADOR, VETERINARIO, ATENDENTE
 ---
 🛠️ Funcionalidades
-- Cadastro, listagem, atualização e exclusão de clientes, pets e funcionários
+- Cadastro, listagem e exclusão de clientes, pets e funcionários
 - Validação automática dos dados via Bean Validation
 - Tratamento global de exceções com mensagens claras de erro
 - Uso de banco em memória H2 para facilitar testes locais
