@@ -32,7 +32,7 @@ A API estará disponível em http://localhost:8080
   - Pets: CACHORRO, GATO, PASSARO, PEIXE, ROEDOR, REPTIL
   - Funcionários:  BANHISTA, TOSADOR, VETERINARIO, ATENDENTE
 ---
-🛠️ Funcionalidades
+## 🛠️ Funcionalidades
 - Cadastro, listagem e exclusão de clientes, pets e funcionários
 - Validação automática dos dados via Bean Validation
 - Tratamento global de exceções com mensagens claras de erro
