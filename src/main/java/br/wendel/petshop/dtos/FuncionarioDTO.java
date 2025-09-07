@@ -11,6 +11,9 @@ import lombok.Data;
 
 @Data
 public class FuncionarioDTO {
+
+    
+    private Long id;
     
     @NotBlank(message = "Nome Obrigatório")
     private String nome;

@@ -27,7 +27,7 @@ public class FuncionarioController {
     }
 
     @GetMapping("/{cpf}")
-    public Optional<Funcionario> buscarPorId(@PathVariable String id){
+    public Optional<Funcionario> buscarPorId(@PathVariable Long id){
         return funcionarioRepository.findById(id);
     }
 
@@ -37,7 +37,7 @@ public class FuncionarioController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletarFuncionario(@PathVariable @Valid String id){
+    public void deletarFuncionario(@PathVariable @Valid Long id){
         funcionarioRepository.deleteById(id);
     }
 
