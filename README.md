@@ -34,6 +34,7 @@ A API estará disponível em http://localhost:8080
 ---
 ## 🛠️ Funcionalidades
 - Cadastro, listagem e exclusão de clientes, pets e funcionários
+- Uso de DTOs para transferência de dados entre camadas
 - Validação automática dos dados via Bean Validation
 - Tratamento global de exceções com mensagens claras de erro
 - Uso de banco em memória H2 para facilitar testes locais
