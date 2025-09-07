@@ -1,23 +1,17 @@
-package br.wendel.petshop.entity;
-
+package br.wendel.petshop.dtos;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
+import br.wendel.petshop.entity.Cliente;
+import br.wendel.petshop.enums.TipoPet;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import br.wendel.petshop.enums.TipoPet;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-public class Pet {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class PetDTO {
 
     @NotBlank(message = "Nome obrigatório")
     @NotNull
@@ -35,5 +29,4 @@ public class Pet {
     @JoinColumn(name = "cliente_nome")
     private Cliente cliente;
 
-    
 }

@@ -1,33 +1,27 @@
-package br.wendel.petshop.entity;
+package br.wendel.petshop.dtos;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.*;
+import br.wendel.petshop.enums.Cargo;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import br.wendel.petshop.enums.Cargo;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-public class Funcionario {
-
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class FuncionarioDTO {
+    
     @NotBlank(message = "Nome Obrigatório")
     private String nome;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @NotBlank(message = "CPF obrigatório")
     @Pattern(regexp = "\\d{11}", message = "CPF deve conter 11 dígitos")
+    @NotNull
     private String cpf;
 
     @Enumerated(EnumType.STRING) 
     @NotNull(message = "Ter um cargo é obrigatório")
     private Cargo cargo;
-
-  
 }

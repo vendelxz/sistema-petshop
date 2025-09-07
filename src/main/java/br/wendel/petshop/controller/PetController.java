@@ -20,7 +20,7 @@ public class PetController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Pet> BuscarPorId(@PathVariable String id){
+    public Optional<Pet> BuscarPorId(@PathVariable Long id){
         return petRepository.findById(id);
     }
 
@@ -30,7 +30,7 @@ public class PetController {
     }
 
     @PutMapping("/{id}")
-    public Pet atualizarPet(@PathVariable String id, @RequestBody @Valid Pet petAtualizado) {
+    public Pet atualizarPet(@PathVariable Long id, @RequestBody @Valid Pet petAtualizado) {
         return petRepository.findById(id)
                 .map(pet -> {
                     pet.setNome(petAtualizado.getNome());
@@ -47,7 +47,7 @@ public class PetController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletarPet(@PathVariable String id) {
+    public void deletarPet(@PathVariable Long id) {
         petRepository.deleteById(id);
     }
 
