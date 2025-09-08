@@ -10,6 +10,7 @@ Este é um projeto Java com Spring Boot para gerenciamento de um petshop. Nele �
 - Spring Boot
 - Spring Web
 - Spring Data JPA
+- Lombok
 - H2 Database (para testes locais)
 - Maven
 - Postman (para testes de API)
@@ -18,7 +19,7 @@ Este é um projeto Java com Spring Boot para gerenciamento de um petshop. Nele �
 ## ⚙️ Como rodar
 Basta rodar a aplicação pela IDE ou usando o terminal (PowerShell ou terminal da própria IDE) com o seguinte código:
 ### mvn spring-boot:run 
-A API estará disponível em http://localhost:8080
+A API estará disponível em:
 - http://localhost:8080/funcionarios 
 - http://localhost:8080/clientes
 - http://localhost:8080/pets
@@ -38,6 +39,7 @@ A API estará disponível em http://localhost:8080
 - Validação automática dos dados via Bean Validation
 - Tratamento global de exceções com mensagens claras de erro
 - Uso de banco em memória H2 para facilitar testes locais
+- Uso de Lombok para reduzir verbosidade e tamanho de código
 ## 👨‍💻 Autor
 - Feito por **José Wendel**
 

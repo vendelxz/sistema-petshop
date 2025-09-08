@@ -12,7 +12,7 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
 
     public ClienteDTO cadastrarCliente(ClienteDTO clienteDTO){
-     Cliente cliente = new Cliente();
+    Cliente cliente = new Cliente();
     cliente.setCpf(clienteDTO.getCpf());
     cliente.setNome(clienteDTO.getNome());
     cliente.setEmail(clienteDTO.getEmail());
@@ -25,6 +25,7 @@ public class ClienteService {
     dtoRetorno.setTelefone(salvo.getTelefone());
     return dtoRetorno;
     } 
+  
     public ClienteDTO buscarPorCpf(String cpf) {
     Cliente cliente = clienteRepository.findById(cpf)
         .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
