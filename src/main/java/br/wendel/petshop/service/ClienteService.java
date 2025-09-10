@@ -1,5 +1,5 @@
 package br.wendel.petshop.service;
-import br.wendel.petshop.dtos.ClienteDTO;
+import br.wendel.petshop.dtos.ClienteRequestDTO;
 import br.wendel.petshop.entity.Cliente;
 import br.wendel.petshop.exception.CpfExistsException;
 import br.wendel.petshop.repository.*;
@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 public class ClienteService {
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ClienteRepository clienteRepository; 
 
-    public ClienteDTO cadastrarCliente(ClienteDTO clienteDTO){
+    public ClienteRequestDTO cadastrarCliente(ClienteRequestDTO clienteDTO){
     Cliente cliente = new Cliente();
-    if(existeCPF(clienteDTO.getCpf())){
+    if(clienteRepository.existsByCpf(clienteDTO.getCpf())){
        throw new CpfExistsException("CPF já cadastrado");
     }  
         cliente.setCpf(clienteDTO.getCpf());
@@ -25,7 +25,8 @@ public class ClienteService {
         cliente.setTelefone(clienteDTO.getTelefone());
         Cliente salvo = clienteRepository.save(cliente);
 
-        ClienteDTO dtoRetorno = new ClienteDTO();
+        ClienteRequestDTO dtoRetorno = new ClienteRequestDTO();
+        dtoRetorno.setId(salvo.getId());
         dtoRetorno.setNome(salvo.getNome());
         dtoRetorno.setEmail(salvo.getEmail());
         dtoRetorno.setTelefone(salvo.getTelefone());
@@ -33,28 +34,19 @@ public class ClienteService {
         return dtoRetorno;
 
     }
-    
-    
-  
-    public ClienteDTO buscarPorCpf(String cpf) {
-    Cliente cliente = clienteRepository.findById(cpf)
-        .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
-    ClienteDTO dto = new ClienteDTO();
-    dto.setNome(cliente.getNome());
-    dto.setEmail(cliente.getEmail());
-    dto.setTelefone(cliente.getTelefone());
-    return dto;
-}
-    public void deletarPorId(String cpf) {
-   if(existeCPF(cpf)){
-    clienteRepository.deleteById(cpf);
+
+    public void deletarPorId(Long id) {
+   if(clienteRepository.existsById(id)){
+    clienteRepository.deleteById(id);
+   } else{
+    throw new RuntimeException("Cliente não encontrado");
    }
-   throw new RuntimeException("Cliente não encontrado");
 }
 
-private boolean existeCPF(String cpf)  {
-    return clienteRepository.existsById(cpf);
+public ClienteRequestDTO buscarPorId(String id){
+    
 }
+
 
 }
 

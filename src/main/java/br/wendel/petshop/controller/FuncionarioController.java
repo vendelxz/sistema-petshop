@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.wendel.petshop.dtos.FuncionarioDTO;
+import br.wendel.petshop.dtos.FuncionarioRequestDTO;
 import br.wendel.petshop.service.FuncionarioService;
 
 @RestController
@@ -22,18 +22,18 @@ public class FuncionarioController {
     private FuncionarioService funcionarioService;
 
     @GetMapping
-    public List<FuncionarioDTO> listarFuncionarios(){
+    public List<FuncionarioRequestDTO> listarFuncionarios(){
        return funcionarioService.listarTodosFuncionarios();
     }
 
     @GetMapping("/{id}")
-    public FuncionarioDTO buscarPorId(@PathVariable Long id){
+    public FuncionarioRequestDTO buscarPorId(@PathVariable Long id){
        return funcionarioService.buscarPorId(id);
     }
 
     @PostMapping
-    public ResponseEntity<FuncionarioDTO> cadastrarFuncionario(@RequestBody @Valid FuncionarioDTO funcionario){
-        FuncionarioDTO dto = funcionarioService.cadastrarFuncionario(funcionario);
+    public ResponseEntity<FuncionarioRequestDTO> cadastrarFuncionario(@RequestBody @Valid FuncionarioRequestDTO funcionario){
+        FuncionarioRequestDTO dto = funcionarioService.cadastrarFuncionario(funcionario);
         return ResponseEntity.status(HttpStatus.CREATED).body(dto);
     }
 

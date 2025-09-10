@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class PetDTO {
+public class PetRequestDTO {
 
     @NotBlank(message = "Nome obrigatório")
     @NotNull

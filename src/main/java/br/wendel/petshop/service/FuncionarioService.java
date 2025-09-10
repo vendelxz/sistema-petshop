@@ -12,38 +12,40 @@ public class FuncionarioService {
     @Autowired
     private FuncionarioRepository funcionarioRepository;
 
-    public FuncionarioDTO cadastrarFuncionario(FuncionarioDTO funcionarioDTO){
+    public FuncionarioRequestDTO cadastrarFuncionario(FuncionarioRequestDTO funcionarioDTO){
         Funcionario funcionario = new Funcionario();
+
+        
         funcionario.setId(funcionarioDTO.getId());
         funcionario.setNome(funcionarioDTO.getNome());
         funcionario.setCpf(funcionarioDTO.getCpf());
         funcionario.setCargo(funcionarioDTO.getCargo());
         Funcionario salvo = funcionarioRepository.save(funcionario);
 
-        FuncionarioDTO dto = new FuncionarioDTO();
+        FuncionarioRequestDTO dto = new FuncionarioRequestDTO();
         dto.setId(salvo.getId());
         dto.setNome(salvo.getNome());
         dto.setCargo(salvo.getCargo());
         return dto;
     }
 
-    public FuncionarioDTO buscarPorId(Long Id){
+    public FuncionarioRequestDTO buscarPorId(Long Id){
         Funcionario funcionario = funcionarioRepository.findById(Id)
-        .orElseThrow(() -> new RuntimeException("Funcionário não encontrado"));
-        FuncionarioDTO dto = new FuncionarioDTO();
+          .orElseThrow(() -> new RuntimeException("Funcionário não encontrado"));
+        FuncionarioRequestDTO dto = new FuncionarioRequestDTO();
         dto.setId(funcionario.getId());
         dto.setNome(funcionario.getNome());
         dto.setCargo(funcionario.getCargo());
         return dto;
     }
 
-    public List<FuncionarioDTO> listarTodosFuncionarios() {
+    public List<FuncionarioRequestDTO> listarTodosFuncionarios() {
     List<Funcionario> funcionarios = funcionarioRepository.findAll();
     if (funcionarios.isEmpty()) {
         throw new RuntimeException("Nenhum funcionário encontrado");
     }
     return funcionarios.stream().map(f -> {
-        FuncionarioDTO dto = new FuncionarioDTO();
+        FuncionarioRequestDTO dto = new FuncionarioRequestDTO();
         dto.setId(f.getId());
         dto.setNome(f.getNome());
         dto.setCargo(f.getCargo());
@@ -57,4 +59,9 @@ public class FuncionarioService {
     }
     funcionarioRepository.deleteById(id);
 }
+
+  /*private boolean existeCPF(String cpf){
+    return funcionarioRepository.existsById(cpf);
+  }
+/* */
 }

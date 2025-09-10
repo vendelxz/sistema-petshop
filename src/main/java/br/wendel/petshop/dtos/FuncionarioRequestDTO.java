@@ -10,11 +10,8 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
-public class FuncionarioDTO {
+public class FuncionarioRequestDTO {
 
-    
-    private Long id;
-    
     @NotBlank(message = "Nome Obrigatório")
     private String nome;
 

@@ -22,6 +22,9 @@ public class Funcionario {
     @NotBlank(message = "Nome Obrigatório")
     private String nome;
 
+    
+    @NotBlank(message = "CPF Obrigatório")
+    @NotNull
     @Pattern(regexp = "\\d{11}", message = "CPF deve conter 11 dígitos")
     private String cpf;
 

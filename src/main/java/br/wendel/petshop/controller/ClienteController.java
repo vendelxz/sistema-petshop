@@ -1,6 +1,6 @@
 package br.wendel.petshop.controller;
 
-import br.wendel.petshop.dtos.ClienteDTO;
+import br.wendel.petshop.dtos.ClienteRequestDTO;
 import br.wendel.petshop.entity.Cliente;
 import br.wendel.petshop.repository.ClienteRepository;
 import br.wendel.petshop.service.ClienteService;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*") 
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
@@ -23,11 +24,11 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @GetMapping
-    public List<ClienteDTO> listarClientes() {
+    public List<ClienteRequestDTO> listarClientes() {
          return clienteRepository.findAll()
         .stream()
         .map(cliente -> {
-            ClienteDTO dto = new ClienteDTO();
+            ClienteRequestDTO dto = new ClienteRequestDTO();
             dto.setNome(cliente.getNome());
             dto.setEmail(cliente.getEmail());
             dto.setTelefone(cliente.getTelefone());
@@ -36,21 +37,21 @@ public class ClienteController {
         .toList();
 }
 
-    @GetMapping("/{cpf}")
-    public ClienteDTO buscarPorCpf(@PathVariable String cpf) {
-        return clienteService.buscarPorCpf(cpf);
+    @GetMapping("/{id}")
+    public ClienteRequestDTO buscarPorid(@PathVariable Long id) {
+        return clienteService.buscarPorid(id);
     }
 
     @PostMapping
-    public ResponseEntity<ClienteDTO> cadastrarCliente(@RequestBody @Valid ClienteDTO clienteDTO) {
-        ClienteDTO dto = clienteService.cadastrarCliente(clienteDTO);
+    public ResponseEntity<ClienteRequestDTO> cadastrarCliente(@RequestBody @Valid ClienteRequestDTO clienteDTO) {
+        ClienteRequestDTO dto = clienteService.cadastrarCliente(clienteDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(dto);
 }
     
 
     @DeleteMapping("/{cpf}")
-    public void deletarCliente(@PathVariable @Valid String cpf) {
-        clienteService.deletarPorId(cpf);
+    public void deletarPeloid(@PathVariable @Valid Long id) {
+        clienteService.deletarPorId(id);
     }
 
 } 

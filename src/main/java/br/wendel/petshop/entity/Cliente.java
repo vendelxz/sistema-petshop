@@ -8,13 +8,21 @@ import java.util.List;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Cliente {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     @NotBlank(message = "Campo obrigatório")
     @Pattern(regexp = "\\d{11}", message = "CPF deve conter 11 dígitos")
     private String cpf;
@@ -32,51 +40,5 @@ public class Cliente {
     @JsonManagedReference
     private List<Pet> pets = new ArrayList<>();
 
-    public Cliente() {}
-
-    public Cliente(String cpf, String nome) {
-        this.cpf = cpf;
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<Pet> getPets() {
-        return pets;
-    }
-
-    public void setPets(List<Pet> pets) {
-        this.pets = pets;
-    }
-
-    public String getTelefone() {
-    return telefone;
-}
-
-public void setTelefone(String telefone) {
-    this.telefone = telefone;
-}
-
-public String getEmail() {
-    return email;
-}
-
-public void setEmail(String email) {
-    this.email = email;
-}
-
+   
 }

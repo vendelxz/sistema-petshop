@@ -32,7 +32,7 @@ public class Pet {
 
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "cliente_nome")
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     

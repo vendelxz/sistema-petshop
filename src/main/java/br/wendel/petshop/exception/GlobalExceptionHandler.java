@@ -52,7 +52,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.METHOD_NOT_ALLOWED);
     }
 
-    @ExceptionHandler(Exception.class)
+     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleAllUncaughtException(Exception ex) {
         // Logar o erro real no console/log para debug
         ex.printStackTrace();
