@@ -58,4 +58,18 @@ public class GlobalExceptionHandler {
         ex.printStackTrace();
         return new ResponseEntity<>("Erro interno no servidor", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(CpfExistsException.class)
+    public ResponseEntity<Map<String,String>> handlerCpfExistsException(CpfExistsException ex){
+        Map<String, String> error = new HashMap<>();
+        error.put("error",ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+    } 
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Map<String, String>> handlerRuntimeException(RuntimeException ex){
+        Map<String, String> error = new HashMap<>();
+        error.put("error", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+    }
 }
