@@ -1,5 +1,6 @@
 package br.wendel.petshop.service;
 import br.wendel.petshop.dtos.ClienteRequestDTO;
+import br.wendel.petshop.dtos.ClienteResponseDTO;
 import br.wendel.petshop.entity.Cliente;
 import br.wendel.petshop.exception.CpfExistsException;
 import br.wendel.petshop.repository.*;
@@ -14,7 +15,7 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository; 
 
-    public ClienteRequestDTO cadastrarCliente(ClienteRequestDTO clienteDTO){
+    public ClienteResponseDTO cadastrarCliente(ClienteRequestDTO clienteDTO){
     Cliente cliente = new Cliente();
     if(clienteRepository.existsByCpf(clienteDTO.getCpf())){
        throw new CpfExistsException("CPF já cadastrado");
@@ -25,13 +26,13 @@ public class ClienteService {
         cliente.setTelefone(clienteDTO.getTelefone());
         Cliente salvo = clienteRepository.save(cliente);
 
-        ClienteRequestDTO dtoRetorno = new ClienteRequestDTO();
-        dtoRetorno.setId(salvo.getId());
-        dtoRetorno.setNome(salvo.getNome());
-        dtoRetorno.setEmail(salvo.getEmail());
-        dtoRetorno.setTelefone(salvo.getTelefone());
+        ClienteResponseDTO clienteResponse = new ClienteResponseDTO();
+        clienteResponse.setId(salvo.getId());
+        clienteResponse.setNome(salvo.getNome());
+        clienteResponse.setEmail(salvo.getEmail());
+        clienteResponse.setTelefone(salvo.getTelefone());
 
-        return dtoRetorno;
+        return clienteResponse;
 
     }
 
@@ -43,8 +44,11 @@ public class ClienteService {
    }
 }
 
-public ClienteRequestDTO buscarPorId(String id){
-    
+public ClienteResponseDTO buscarPorId(Long id){
+  if(clienteRepository.existsById(id)){
+    return clienteRepository.findById(id);
+  }
+    throw new RuntimeException("Esse mízera tá aq não");
 }
 
 
