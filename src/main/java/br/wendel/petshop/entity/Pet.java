@@ -26,7 +26,7 @@ public class Pet {
     @Enumerated(EnumType.STRING)
     private TipoPet tipo;
 
-    private Integer idade;
+    private int idade;
 
     private String raca;
 

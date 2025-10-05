@@ -24,7 +24,7 @@ public class ClienteService {
         cliente.setNome(clienteDTO.getNome());
         cliente.setEmail(clienteDTO.getEmail());
         cliente.setTelefone(clienteDTO.getTelefone());
-        Cliente salvo = clienteRepository.save(cliente);
+        Cliente salvo = clienteRepository.save();
 
         ClienteResponseDTO clienteResponse = new ClienteResponseDTO();
         clienteResponse.setId(salvo.getId());
