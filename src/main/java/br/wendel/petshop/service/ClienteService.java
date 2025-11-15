@@ -1,17 +1,15 @@
 package br.wendel.petshop.service;
+
 import br.wendel.petshop.dtos.cliente.ClienteDTO;
 import br.wendel.petshop.dtos.cliente.ClienteResponseDTO;
+import br.wendel.petshop.dtos.funcionarios.FuncionarioResponseDTO;
 import br.wendel.petshop.entity.Cliente;
 import br.wendel.petshop.exception.CpfExistsException;
 import br.wendel.petshop.mappers.cliente.ClienteMapper;
 import br.wendel.petshop.repository.*;
+
 import jakarta.persistence.EntityNotFoundException;
-
 import java.util.List;
-import java.util.Optional;
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,11 +24,11 @@ public class ClienteService {
     @Autowired
     ClienteMapper clienteMapper;
 
-    @SuppressWarnings("null")
-    public ClienteResponseDTO cadastrarCliente(ClienteDTO clienteDTO) throws CpfExistsException{
+    
+    public ClienteResponseDTO cadastrarCliente(ClienteDTO clienteDTO) {
       //Todo: Usar o método do mapper para criar o cadastro 
       if (clienteRepository.existsByCpf(clienteDTO.getCpf())) {  
-        throw new CpfExistsException("O cliente já existe no banco de dados!");     
+        throw new CpfExistsException("Este CPF já existe no banco de dados, procure o admnistrador!");     
         }
 
         Cliente newCliente = new Cliente();
@@ -47,11 +45,12 @@ public class ClienteService {
     }
 
 
+    @SuppressWarnings("null")
     public void deletarPorId(Long id) {
       if(clienteRepository.existsById(id)){
         clienteRepository.deleteById(id);
    }  else{
-        throw new RuntimeException("Cliente não encontrado");
+        throw new EntityNotFoundException("Cliente não encontrado");
    }
 }
 
@@ -73,6 +72,8 @@ public class ClienteService {
             .toList();
         
     }
+
+    
 
 
 }

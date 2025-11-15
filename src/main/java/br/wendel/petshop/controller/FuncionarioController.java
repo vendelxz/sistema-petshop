@@ -1,4 +1,5 @@
 package br.wendel.petshop.controller;
+
 import java.util.List;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.wendel.petshop.dtos.funcionarios.FuncionarioDTO;
+import br.wendel.petshop.dtos.funcionarios.FuncionarioResponseDTO;
 import br.wendel.petshop.service.FuncionarioService;
 
 @RestController
@@ -22,7 +24,28 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioService funcionarioService;
 
-    //IMPLEMENTAR OS MÉTODOS ATUALIZADOS DEPOIS 
+    @GetMapping
+    public ResponseEntity<List<FuncionarioResponseDTO>> acharTodos(){
+        List<FuncionarioResponseDTO> funcionarios = funcionarioService.acharTodos();
+        return ResponseEntity.status(HttpStatus.OK).body(funcionarios);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<FuncionarioResponseDTO> acharPorId(@PathVariable @Valid Long id){
+        FuncionarioResponseDTO funcionario = funcionarioService.buscarPeloId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(funcionario);
+    }
+
+    @PostMapping
+    public ResponseEntity<FuncionarioResponseDTO> cadastrarFuncionario(@Valid @RequestBody FuncionarioDTO funcionarioDTO){
+        FuncionarioResponseDTO funcionarioCadastrado = funcionarioService.cadastrarFuncionario(funcionarioDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(funcionarioCadastrado);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletarPeloid(@Valid @PathVariable Long id){
+        funcionarioService.buscarPeloId(id);
+    }
     
 
 }

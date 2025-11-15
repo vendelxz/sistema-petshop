@@ -11,15 +11,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
+
 
 @CrossOrigin(origins = "*") 
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
 
-    @Autowired
-    private ClienteRepository clienteRepository;
 
     @Autowired
     private ClienteService clienteService;
