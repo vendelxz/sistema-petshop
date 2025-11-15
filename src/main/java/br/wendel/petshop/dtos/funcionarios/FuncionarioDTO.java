@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import br.wendel.petshop.enums.Cargo;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
-public class FuncionarioRequestDTO {
+public class FuncionarioDTO {
 
     @NotBlank(message = "Nome Obrigatório")
     private String nome;
@@ -24,4 +25,10 @@ public class FuncionarioRequestDTO {
     @Enumerated(EnumType.STRING) 
     @NotNull(message = "Ter um cargo é obrigatório")
     private Cargo cargo;
+
+    @NotNull
+    @NotBlank(message = "Email para contato é obrigatório!")
+    @Email
+    private String email;
+
 }

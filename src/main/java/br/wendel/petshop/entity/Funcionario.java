@@ -1,6 +1,7 @@
 package br.wendel.petshop.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -31,6 +32,11 @@ public class Funcionario {
     @Enumerated(EnumType.STRING) 
     @NotNull(message = "Ter um cargo é obrigatório")
     private Cargo cargo;
+
+    @NotNull
+    @NotBlank(message = "Email para contato é obrigatório!")
+    @Email
+    private String email;
 
   
 }

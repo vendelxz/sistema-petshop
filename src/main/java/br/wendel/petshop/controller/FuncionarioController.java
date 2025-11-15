@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.wendel.petshop.dtos.funcionarios.FuncionarioRequestDTO;
+import br.wendel.petshop.dtos.funcionarios.FuncionarioDTO;
 import br.wendel.petshop.service.FuncionarioService;
 
 @RestController
