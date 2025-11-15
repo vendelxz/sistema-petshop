@@ -1,4 +1,4 @@
-package br.wendel.petshop.dtos;
+package br.wendel.petshop.dtos.funcionarios;
 
 import br.wendel.petshop.enums.Cargo;
 import jakarta.persistence.EnumType;
@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class FuncioarioResponseDTO {
+public class FuncionarioResponseDTO {
 
     private Long id;
 
@@ -16,7 +16,7 @@ public class FuncioarioResponseDTO {
     @NotNull
     private String nome;
 
-     @Enumerated(EnumType.STRING) 
+    @Enumerated(EnumType.STRING) 
     @NotNull(message = "Ter um cargo é obrigatório")
     private Cargo cargo;
 }

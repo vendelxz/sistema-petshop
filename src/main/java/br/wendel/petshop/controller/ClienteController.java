@@ -1,6 +1,7 @@
 package br.wendel.petshop.controller;
 
-import br.wendel.petshop.dtos.ClienteRequestDTO;
+import br.wendel.petshop.dtos.cliente.ClienteDTO;
+import br.wendel.petshop.dtos.cliente.ClienteResponseDTO;
 import br.wendel.petshop.entity.Cliente;
 import br.wendel.petshop.repository.ClienteRepository;
 import br.wendel.petshop.service.ClienteService;
@@ -24,32 +25,24 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @GetMapping
-    public List<ClienteRequestDTO> listarClientes() {
-         return clienteRepository.findAll()
-        .stream()
-        .map(cliente -> {
-            ClienteRequestDTO dto = new ClienteRequestDTO();
-            dto.setNome(cliente.getNome());
-            dto.setEmail(cliente.getEmail());
-            dto.setTelefone(cliente.getTelefone());
-            return dto;
-        })
-        .toList();
+    public ResponseEntity<List<ClienteResponseDTO>> listarClientes() {
+        List<ClienteResponseDTO> clientes = clienteService.acharTodos();
+        return ResponseEntity.status(HttpStatus.OK).body(clientes);
 }
 
     @GetMapping("/{id}")
-    public ClienteRequestDTO buscarPorid(@PathVariable Long id) {
-        return clienteService.buscarPorid(id);
+    public ClienteResponseDTO buscarPorId(@PathVariable Long id) {
+        return clienteService.buscarPorId(id);
     }
 
     @PostMapping
-    public ResponseEntity<ClienteRequestDTO> cadastrarCliente(@RequestBody @Valid ClienteRequestDTO clienteDTO) {
-        ClienteRequestDTO dto = clienteService.cadastrarCliente(clienteDTO);
+    public ResponseEntity<ClienteResponseDTO> cadastrarCliente(@RequestBody @Valid ClienteDTO clienteDTO) {
+        ClienteResponseDTO dto = clienteService.cadastrarCliente(clienteDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(dto);
 }
     
 
-    @DeleteMapping("/{cpf}")
+    @DeleteMapping("/{id}")
     public void deletarPeloid(@PathVariable @Valid Long id) {
         clienteService.deletarPorId(id);
     }
