@@ -1,4 +1,4 @@
-package br.wendel.petshop.dtos;
+package br.wendel.petshop.dtos.funcionarios;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.wendel.petshop.enums.Cargo;

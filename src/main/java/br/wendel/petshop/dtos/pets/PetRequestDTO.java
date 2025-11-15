@@ -1,4 +1,4 @@
-package br.wendel.petshop.dtos;
+package br.wendel.petshop.dtos.pets;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import br.wendel.petshop.entity.Cliente;
 import br.wendel.petshop.enums.TipoPet;

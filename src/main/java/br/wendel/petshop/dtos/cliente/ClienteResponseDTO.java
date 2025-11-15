@@ -1,4 +1,4 @@
-package br.wendel.petshop.dtos;
+package br.wendel.petshop.dtos.cliente;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.wendel.petshop.dtos.FuncionarioRequestDTO;
+
+import br.wendel.petshop.dtos.funcionarios.FuncionarioRequestDTO;
 import br.wendel.petshop.service.FuncionarioService;
 
 @RestController
@@ -21,25 +22,7 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioService funcionarioService;
 
-    @GetMapping
-    public List<FuncionarioRequestDTO> listarFuncionarios(){
-       return funcionarioService.listarTodosFuncionarios();
-    }
-
-    @GetMapping("/{id}")
-    public FuncionarioRequestDTO buscarPorId(@PathVariable Long id){
-       return funcionarioService.buscarPorId(id);
-    }
-
-    @PostMapping
-    public ResponseEntity<FuncionarioRequestDTO> cadastrarFuncionario(@RequestBody @Valid FuncionarioRequestDTO funcionario){
-        FuncionarioRequestDTO dto = funcionarioService.cadastrarFuncionario(funcionario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(dto);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deletarFuncionario(@PathVariable @Valid Long id){
-        funcionarioService.deletarPorId(id);
-    }
+    //IMPLEMENTAR OS MÉTODOS ATUALIZADOS DEPOIS 
+    
 
 }
