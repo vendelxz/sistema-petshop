@@ -44,7 +44,8 @@ public class FuncionarioController {
 
     @DeleteMapping("/{id}")
     public void deletarPeloid(@Valid @PathVariable Long id){
-        funcionarioService.buscarPeloId(id);
+        funcionarioService.deletarPorId(id);
+        ResponseEntity.status(HttpStatus.OK).body("Funcionário deletado com sucesso!");
     }
     
 

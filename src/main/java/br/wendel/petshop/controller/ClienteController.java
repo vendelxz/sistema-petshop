@@ -43,6 +43,8 @@ public class ClienteController {
     @DeleteMapping("/{id}")
     public void deletarPeloid(@PathVariable @Valid Long id) {
         clienteService.deletarPorId(id);
+        ResponseEntity.status(HttpStatus.OK).body("Cliente deletado com sucesso!");
+
     }
 
 } 

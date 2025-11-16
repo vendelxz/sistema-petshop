@@ -46,9 +46,11 @@ public class FuncionarioService {
     public void deletarPorId(Long id){
         if(funcionarioRepository.existsById(id)){
             funcionarioRepository.deleteById(id);
-        }
-        throw new EntityExistsException("O funcionário não foi encontrado com o id: "+ id);
+        }else{
+            throw new EntityNotFoundException("O funcionário não foi encontrado com o id: "+ id);
     }
+        }
+        
 
     public FuncionarioResponseDTO buscarPeloId(Long id){
         Funcionario funcionario = funcionarioRepository.findById(id)

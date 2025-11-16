@@ -50,7 +50,7 @@ public class ClienteService {
       if(clienteRepository.existsById(id)){
         clienteRepository.deleteById(id);
    }  else{
-        throw new EntityNotFoundException("Cliente não encontrado");
+        throw new EntityNotFoundException("Cliente não encontrado com o id: "+ id);
    }
 }
 
